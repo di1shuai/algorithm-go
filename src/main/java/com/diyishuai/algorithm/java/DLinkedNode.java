@@ -26,38 +26,15 @@ public class DLinkedNode {
         return value + "->" +next;
     }
 
-    public Long getValue() {
-        return value;
-    }
-
-    public void setValue(Long value) {
-        this.value = value;
-    }
-
-    public DLinkedNode getPrev() {
-        return prev;
-    }
-
-    public void setPrev(DLinkedNode prev) {
-        this.prev = prev;
-    }
-
-    public DLinkedNode getNext() {
-        return next;
-    }
-
-    public void setNext(DLinkedNode next) {
-        this.next = next;
-    }
 
     public static void main(String[] args) {
         DLinkedNode n1 = new DLinkedNode(1l,null,null);
         DLinkedNode n2 = new DLinkedNode(2l,n1,null);
         DLinkedNode n3 = new DLinkedNode(3l,n2,null);
         DLinkedNode n4 = new DLinkedNode(4l,n3,null);
-        n1.setNext(n2);
-        n2.setNext(n3);
-        n3.setNext(n4);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
 
         System.out.println(n1);
         System.out.println(reverse(n1));
