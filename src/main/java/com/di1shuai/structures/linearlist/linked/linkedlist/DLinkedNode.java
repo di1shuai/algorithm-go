@@ -1,4 +1,4 @@
-package com.diyishuai.algorithm.java;
+package com.di1shuai.structures.linearlist.linked.linkedlist;
 
 /**
  * @author Bruce
@@ -52,8 +52,9 @@ public class DLinkedNode {
 
             prev = current;
             current = next;
-            if (next!=null)
+            if (next!=null) {
                 next = current.next;
+            }
         }
         return prev;
     }
