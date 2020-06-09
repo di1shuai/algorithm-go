@@ -57,13 +57,13 @@ public class BinaryTreeNode {
         BinaryTreeNode root = new BinaryTreeNode(
                 new BinaryTreeNode(
                         new BinaryTreeNode(null,4l,null),
-                        2l,
+                        2L,
                         null
                 ),
-                1l,
+                1L,
                 new BinaryTreeNode(
                         new BinaryTreeNode(null,5l,null),
-                        3l,
+                        3L,
                         new BinaryTreeNode(null,6l,null)
                 )
         );
