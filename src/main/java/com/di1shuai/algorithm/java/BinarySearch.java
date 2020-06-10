@@ -1,4 +1,4 @@
-package com.diyishuai.algorithm.java;
+package com.di1shuai.algorithm.java;
 
 /**
  * @author: Bruce

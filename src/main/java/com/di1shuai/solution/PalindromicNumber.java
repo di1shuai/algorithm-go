@@ -1,4 +1,4 @@
-package com.diyishuai.algorithm.java.solution;
+package com.di1shuai.solution;
 
 public class PalindromicNumber {
 

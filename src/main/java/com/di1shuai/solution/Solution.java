@@ -1,4 +1,4 @@
-package com.diyishuai.algorithm.java.solution;
+package com.di1shuai.solution;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.diyishuai.algorithm.java.solution;
+package com.di1shuai.solution;
 
 import org.w3c.dom.ls.LSOutput;
 
