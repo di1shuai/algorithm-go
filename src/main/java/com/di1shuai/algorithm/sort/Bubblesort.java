@@ -1,19 +1,27 @@
 package com.di1shuai.algorithm.sort;
 
-public class BubbleSort {
+import java.util.Arrays;
+
+/**
+ * @author: Shea
+ * @date: 2019/9/20
+ * @description:
+ */
+public class Bubblesort implements Sort<Integer>{
 
     public static void main(String[] args) {
-        int[] array = new int[]{1,5,2,9,0,-1,10};
-        int[] array2 = new int[]{1,2,3,4,5,6,7};
-        int[] result = sort(array2);
-        for (Object obj: result) {
-            System.out.print(obj+"\t");
-        }
+        Sort<Integer> sort = new Bubblesort();
+
+        Integer[] array = new Integer[]{1,5,2,9,0,-1,10};
+        Integer[] array2 = new Integer[]{1,2,3,4,5,6,7};
+
+        Arrays.stream(sort.sort(array)).forEach( n-> System.out.print(n+"\t"));
         System.out.println();
 
     }
 
-    public static int[] sort(int[] array){
+    @Override
+    public Integer[] sort(Integer[] array) {
         for (int i = 0; i < array.length; i++) {
             boolean isOk = true;
             System.out.println("第"+(i+1)+"轮");
@@ -24,12 +32,11 @@ public class BubbleSort {
                     array[j] = x;
                     isOk = false;
                 }
-                if (isOk)
-                    return array;
+            }
+            if (isOk) {
+                return array;
             }
         }
         return array;
     }
-
-
 }
