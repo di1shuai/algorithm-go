@@ -1,5 +1,7 @@
 package com.di1shuai.algorithm.sort;
 
+import java.util.Arrays;
+
 /**
  * @author: Shea
  * @date: 2020/6/10
@@ -7,6 +9,18 @@ package com.di1shuai.algorithm.sort;
  */
 public interface Sort<T> {
 
-    T[] sort(T[] array);
+    T[] sort(T[] arraySource);
+
+    default void show(T[] array){
+        Arrays.stream(array).forEach(n-> System.out.print(n+"\t"));
+        System.out.println();
+    }
+
+    default void swap(T[] array,int index1,int index2){
+        T tmp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = tmp;
+    }
+
 
 }
