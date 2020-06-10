@@ -1,4 +1,4 @@
-package com.di1shuai.algorithm.java;
+package com.di1shuai.algorithm.sort;
 
 public class BubbleSort {
 
