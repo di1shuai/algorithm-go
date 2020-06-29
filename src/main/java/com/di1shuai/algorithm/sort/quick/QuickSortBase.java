@@ -1,7 +1,6 @@
 package com.di1shuai.algorithm.sort.quick;
 
 import com.di1shuai.algorithm.sort.AbstractSort;
-import com.di1shuai.algorithm.sort.Sort;
 
 /**
  * @author: Shea

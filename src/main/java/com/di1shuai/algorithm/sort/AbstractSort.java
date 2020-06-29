@@ -1,5 +1,7 @@
 package com.di1shuai.algorithm.sort;
 
+import com.di1shuai.utils.TimeUtil;
+
 /**
  * @author: Shea
  * @date: 2020/6/29
@@ -35,6 +37,6 @@ public abstract class AbstractSort implements Sort<Integer>, Comparable<Abstract
 
     @Override
     public String toString() {
-        return name + "\t"  + cost + "\t";
+        return name + "\t"  + TimeUtil.costTimeString(cost) + "\t";
     }
 }
