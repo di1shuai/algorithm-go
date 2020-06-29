@@ -1,5 +1,6 @@
 package com.di1shuai.algorithm.sort.bubble;
 
+import com.di1shuai.algorithm.sort.AbstractSort;
 import com.di1shuai.algorithm.sort.Sort;
 
 /**
@@ -9,25 +10,26 @@ import com.di1shuai.algorithm.sort.Sort;
  * 增加有序边界，来记录每轮最后发生交换的位置
  * 在交换位置之后，则是有序边界
  */
-public class BubbleSortBorder implements Sort<Integer> {
+public class BubbleSortBorder extends AbstractSort {
 
     @Override
     public Integer[] sort(Integer[] arraySource) {
         Integer[] array = arraySource.clone();
         int border = 0;
         for (int i = 0; i < array.length; i++) {
-            System.out.print("第" + (i + 1) + "轮:\t");
+//            System.out.print("第" + (i + 1) + "轮:\t");
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
                     swap(array, j, j + 1);
                     border = j;
                 }
             }
-            show(array);
+//            show(array);
             if (border == 0){
                 return array;
             }
         }
+        showWithDefaultLimit(array);
         return array;
     }
 }

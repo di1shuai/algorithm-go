@@ -1,5 +1,6 @@
 package com.di1shuai.algorithm.sort.bubble;
 
+import com.di1shuai.algorithm.sort.AbstractSort;
 import com.di1shuai.algorithm.sort.Sort;
 
 import java.util.Arrays;
@@ -11,7 +12,7 @@ import java.util.Arrays;
  * 增加标识位，来标识每轮排序是否有序
  * 若有序，则结束排序
  */
-public class BubbleSortFlag implements Sort<Integer> {
+public class BubbleSortFlag extends AbstractSort {
 
 
 
@@ -20,18 +21,19 @@ public class BubbleSortFlag implements Sort<Integer> {
         Integer[] array = arraySource.clone();
         for (int i = 0; i < array.length; i++) {
             boolean isOk = true;
-            System.out.print("第" + (i + 1) + "轮:\t");
+//            System.out.print("第" + (i + 1) + "轮:\t");
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
                     swap(array, j, j + 1);
                     isOk = false;
                 }
             }
-            show(array);
+//            show(array);
             if (isOk) {
                 return array;
             }
         }
+        showWithDefaultLimit(array);
         return array;
     }
 }

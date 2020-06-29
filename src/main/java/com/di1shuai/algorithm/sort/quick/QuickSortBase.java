@@ -1,5 +1,6 @@
 package com.di1shuai.algorithm.sort.quick;
 
+import com.di1shuai.algorithm.sort.AbstractSort;
 import com.di1shuai.algorithm.sort.Sort;
 
 /**
@@ -14,13 +15,13 @@ import com.di1shuai.algorithm.sort.Sort;
  * 最坏运行时间为 n^2
  *
  */
-public class QuickSortBase implements Sort<Integer> {
+public class QuickSortBase extends AbstractSort {
 
     @Override
     public Integer[] sort(Integer[] arraySource) {
         Integer[] array = arraySource.clone();
         quickSort(array, 0, array.length - 1);
-        show(array);
+        showWithDefaultLimit(array);
         return array;
     }
 

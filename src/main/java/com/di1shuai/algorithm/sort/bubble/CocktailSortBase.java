@@ -1,5 +1,6 @@
 package com.di1shuai.algorithm.sort.bubble;
 
+import com.di1shuai.algorithm.sort.AbstractSort;
 import com.di1shuai.algorithm.sort.Sort;
 
 
@@ -12,7 +13,7 @@ import com.di1shuai.algorithm.sort.Sort;
  * 正：排最大
  * 倒：排最小
  */
-public class CocktailSortBase implements Sort<Integer> {
+public class CocktailSortBase extends AbstractSort {
     @Override
     public Integer[] sort(Integer[] arraySource) {
         Integer[] array = arraySource.clone();
@@ -20,7 +21,7 @@ public class CocktailSortBase implements Sort<Integer> {
         int left = 0, right = array.length - 1;
 
         while (left < right) {
-            System.out.print("第" + (++n) + "轮:\t");
+//            System.out.print("第" + (++n) + "轮:\t");
             ncs = 0;
             for (int i = left; i < right; i++) {
                 if (array[i] > array[i + 1]) {
@@ -37,9 +38,10 @@ public class CocktailSortBase implements Sort<Integer> {
             }
             left++;
             nc += ncs;
-            System.out.print("判断" + ncs + "次\t");
-            show(array);
+//            System.out.print("判断" + ncs + "次\t");
+//            show(array);
         }
+        showWithDefaultLimit(array);
         System.out.println("共判断" + nc + "次");
         return array;
     }
