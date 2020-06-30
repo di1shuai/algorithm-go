@@ -3,6 +3,7 @@ package com.di1shuai.algorithm.sort;
 import com.di1shuai.algorithm.sort.Sort;
 import com.di1shuai.algorithm.sort.bubble.*;
 import com.di1shuai.algorithm.sort.quick.QuickSortBase;
+import com.di1shuai.algorithm.sort.select.SelectionSort;
 import com.di1shuai.utils.DataUtil;
 
 import java.util.*;
@@ -25,6 +26,8 @@ public class SortTest {
         sortList.add(new CocktailSortBase());
         sortList.add(new CocktailSortFlag());
         sortList.add(new CocktailSortBorder());
+
+        sortList.add(new SelectionSort());
 
 //        sortList.add(new QuickSortBase());
 
