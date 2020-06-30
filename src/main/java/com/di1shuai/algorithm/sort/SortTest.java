@@ -6,6 +6,7 @@ import com.di1shuai.algorithm.sort.quick.QuickSortBase;
 import com.di1shuai.algorithm.sort.select.SelectionSort;
 import com.di1shuai.algorithm.sort.shell.ShellSort;
 import com.di1shuai.utils.DataUtil;
+import com.di1shuai.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,7 +58,7 @@ public class SortTest {
     private static void sortsTest(String title,List<AbstractSort> sortList,Integer[] arraySource) {
         System.out.println("==========" + title + "=============" );
         TreeSet<AbstractSort> treeSet = new TreeSet<>();
-        System.out.println("原始数据");
+        System.out.println("原始数据\t size:"+arraySource.length );
         Arrays.stream(arraySource).limit(1000).forEach(n -> System.out.print(n+"\t"));
         System.out.println();
         System.out.println("-------------------");
@@ -67,7 +68,7 @@ public class SortTest {
             Integer[] sortResult = sort.sort(arraySource);
             long end = System.currentTimeMillis();
             long cost = end - start;
-            System.out.print("花费时间 : " + cost);
+            System.out.print("花费时间 : " + TimeUtil.costTimeString(cost));
             System.out.println(" \t 结果 : " + sort.check(sortResult));
             sort.cost = cost;
             treeSet.add(sort);
