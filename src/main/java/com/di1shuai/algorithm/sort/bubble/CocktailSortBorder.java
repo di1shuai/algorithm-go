@@ -19,13 +19,13 @@ public class CocktailSortBorder extends AbstractSort {
     @Override
     public Integer[] sort(Integer[] arraySource) {
         Integer[] array = arraySource.clone();
-        int n = 0, nc = 0, ncs = 0;
+//        int n = 0, nc = 0, ncs = 0;
         int left = 0, right = array.length - 1;
         int leftBorder = array.length - 1, rightBorder = 0;
         boolean ok = false;
         while (!ok) {
             ok = true;
-            ncs = 0;
+//            ncs = 0;
 //            System.out.print("第" + (++n) + "轮:\t");
             for (int i = left; i < right; i++) {
                 if (array[i] > array[i + 1]) {
@@ -33,7 +33,7 @@ public class CocktailSortBorder extends AbstractSort {
                     rightBorder = i;
                     ok = false;
                 }
-                ncs++;
+//                ncs++;
             }
             right = rightBorder;
             for (int i = right; i > left; i--) {
@@ -42,15 +42,15 @@ public class CocktailSortBorder extends AbstractSort {
                     leftBorder = i;
                     ok = false;
                 }
-                ncs++;
+//                ncs++;
             }
             left = leftBorder;
-            nc += ncs;
+//            nc += ncs;
 //            System.out.print("判断" + ncs + "次\t");
 //            show(array);
         }
         showWithDefaultLimit(array);
-        System.out.println("共判断" + nc + "次");
+//        System.out.println("共判断" + nc + "次");
         return array;
     }
 }

@@ -17,32 +17,32 @@ public class CocktailSortBase extends AbstractSort {
     @Override
     public Integer[] sort(Integer[] arraySource) {
         Integer[] array = arraySource.clone();
-        int n = 0, nc = 0, ncs = 0;
+//        int n = 0, nc = 0, ncs = 0;
         int left = 0, right = array.length - 1;
 
         while (left < right) {
 //            System.out.print("第" + (++n) + "轮:\t");
-            ncs = 0;
+//            ncs = 0;
             for (int i = left; i < right; i++) {
                 if (array[i] > array[i + 1]) {
                     swap(array, i, i + 1);
                 }
-                ncs++;
+//                ncs++;
             }
             right--;
             for (int i = right; i > left; i--) {
                 if (array[i] < array[i - 1]) {
                     swap(array, i, i - 1);
                 }
-                ncs++;
+//                ncs++;
             }
             left++;
-            nc += ncs;
+//            nc += ncs;
 //            System.out.print("判断" + ncs + "次\t");
 //            show(array);
         }
         showWithDefaultLimit(array);
-        System.out.println("共判断" + nc + "次");
+//        System.out.println("共判断" + nc + "次");
         return array;
     }
 

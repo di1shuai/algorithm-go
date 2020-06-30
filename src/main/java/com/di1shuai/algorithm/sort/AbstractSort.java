@@ -37,6 +37,6 @@ public abstract class AbstractSort implements Sort<Integer>, Comparable<Abstract
 
     @Override
     public String toString() {
-        return name + "\t"  + TimeUtil.costTimeString(cost) + "\t";
+        return name + "\t" + TimeUtil.costTimeString(cost) + "\t";
     }
 }
