@@ -15,6 +15,7 @@ public abstract class AbstractSort implements Sort<Integer>, Comparable<Abstract
 
     @Override
     public boolean equals(Object obj) {
+    	
         if (obj instanceof AbstractSort) {
             AbstractSort otherSort = (AbstractSort) obj;
             if (name == otherSort.name && cost == otherSort.cost) {
@@ -26,13 +27,13 @@ public abstract class AbstractSort implements Sort<Integer>, Comparable<Abstract
 
     @Override
     public int compareTo(AbstractSort otherSort) {
+    	int flag= 1;
         if (cost > otherSort.cost) {
-            return 1;
+        	flag = 1;
         } else if (cost < otherSort.cost) {
-            return -1;
-        } else {
-            return 0;
+        	flag = -1;
         }
+        return flag;
     }
 
     @Override
