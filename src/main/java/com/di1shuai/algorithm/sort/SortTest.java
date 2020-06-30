@@ -1,14 +1,14 @@
 package com.di1shuai.algorithm.sort;
 
-import com.di1shuai.algorithm.sort.Sort;
 import com.di1shuai.algorithm.sort.bubble.*;
+import com.di1shuai.algorithm.sort.insert.InsertSort;
 import com.di1shuai.algorithm.sort.quick.QuickSortBase;
 import com.di1shuai.algorithm.sort.select.SelectionSort;
 import com.di1shuai.utils.DataUtil;
 
-import java.util.*;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 
 /**
  * @author: Shea
@@ -28,6 +28,8 @@ public class SortTest {
         sortList.add(new CocktailSortBorder());
 
         sortList.add(new SelectionSort());
+
+        sortList.add(new InsertSort());
 
 //        sortList.add(new QuickSortBase());
 
@@ -59,7 +61,8 @@ public class SortTest {
         });
         System.out.println(title + "时间排行榜");
         treeSet.stream().forEach(System.out::println);
-        System.out.println();
+
+        System.out.println(treeSet.size());
         System.out.println();
         System.out.println();
         System.out.println();
