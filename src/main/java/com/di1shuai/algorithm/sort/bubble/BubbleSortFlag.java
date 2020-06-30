@@ -19,8 +19,9 @@ public class BubbleSortFlag extends AbstractSort {
     @Override
     public Integer[] sort(Integer[] arraySource) {
         Integer[] array = arraySource.clone();
+        boolean isOk = true;
         for (int i = 0; i < array.length; i++) {
-            boolean isOk = true;
+            isOk = true;
 //            System.out.print("第" + (i + 1) + "轮:\t");
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {

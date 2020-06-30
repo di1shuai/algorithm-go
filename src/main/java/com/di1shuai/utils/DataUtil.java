@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  */
 public class DataUtil {
 
-    private static Integer size = 20 * 1000;
+    private static Integer size = 40 * 1000;
 
     //无序
     private static Integer[] arrayRandom;
