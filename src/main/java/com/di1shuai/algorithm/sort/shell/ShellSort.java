@@ -41,7 +41,6 @@ public class ShellSort extends AbstractSort {
             }
         }
 
-        showWithDefaultLimit(array);
         return array;
     }
 }

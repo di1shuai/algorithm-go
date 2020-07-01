@@ -9,10 +9,9 @@ import com.di1shuai.algorithm.sort.AbstractSort;
  * 定义一个基准
  * <p>
  * 左边找一个小于 右边找一个大于  交换
- *
+ * <p>
  * 平均时间复杂度 nlogn
  * 最坏运行时间为 n^2
- *
  */
 public class QuickSortBase extends AbstractSort {
 
@@ -20,32 +19,33 @@ public class QuickSortBase extends AbstractSort {
     public Integer[] sort(Integer[] arraySource) {
         Integer[] array = arraySource.clone();
         quickSort(array, 0, array.length - 1);
-        showWithDefaultLimit(array);
         return array;
     }
 
-    private Integer[] quickSort(Integer[] array, int left, int right) {
+    private Integer[] quickSort(Integer[] array, int left, int right) throws StackOverflowError {
 
         int start = left;
         int end = right;
         int pivot = array[left];
         while (start < end) {
             //从后往前
-            while (start < end && array[end] >= pivot) {
+            while (start < end && array[end] > pivot) {
                 end--;
             }
             //从前往后
             while (start < end && array[start] < pivot) {
                 start++;
             }
-            if (start < end) {
+            if (array[start].equals(array[end]) && start < end) {
+                start++;
+            } else {
                 swap(array, start, end);
             }
         }
-        if (start > left) {
+        if (start - 1 > left) {
             quickSort(array, left, start - 1);
         }
-        if (end < right) {
+        if (end + 1 < right) {
             quickSort(array, end + 1, right);
         }
         return array;

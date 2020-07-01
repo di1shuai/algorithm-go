@@ -27,7 +27,6 @@ public class InsertSort extends AbstractSort {
             }
         }
 
-        showWithDefaultLimit(array);
         return array;
     }
 

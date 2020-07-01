@@ -29,7 +29,6 @@ public class BubbleSortBorder extends AbstractSort {
                 return array;
             }
         }
-        showWithDefaultLimit(array);
         return array;
     }
 }

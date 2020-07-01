@@ -35,7 +35,6 @@ public class BubbleSortFlag extends AbstractSort {
                 return array;
             }
         }
-        showWithDefaultLimit(array);
         return array;
     }
 }

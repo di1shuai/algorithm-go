@@ -26,11 +26,11 @@ public class SortTest {
 
 
         // n^2
-        sortList.add(new BubbleSortBase());
-        sortList.add(new BubbleSortFlag());
-        sortList.add(new BubbleSortBorder());
-        sortList.add(new CocktailSortBase());
-        sortList.add(new CocktailSortFlag());
+//        sortList.add(new BubbleSortBase());
+//        sortList.add(new BubbleSortFlag());
+//        sortList.add(new BubbleSortBorder());
+//        sortList.add(new CocktailSortBase());
+//        sortList.add(new CocktailSortFlag());
         sortList.add(new CocktailSortBorder());
 
         sortList.add(new SelectionSort());
@@ -42,7 +42,8 @@ public class SortTest {
 
         sortList.add(new ShellSort());
 
-//        sortList.add(new QuickSortBase());
+        sortList.add(new QuickSortBase());
+        sortList.add(new ArraysSort());
 
         //基本有序
         Integer[] array3 = new Integer[]{1, 2, 3, 4, 5, 6, -1};
@@ -50,34 +51,36 @@ public class SortTest {
         //基本有序
         Integer[] array4 = new Integer[]{1, 2, 3, 4, 5, -1, 8, 7, 20, 10, 11, 40, 13, 14, 15, 16, 17, 18, 19, 20};
 
-        sortsTest("随机数据测试",sortList,DataUtil.getArrayRandom());
-        sortsTest("有序数据测试",sortList,DataUtil.getArraySerialized());
+        sortsTest("随机数据测试", sortList, DataUtil.getArrayRandom());
+        sortsTest("有序数据测试", sortList, DataUtil.getArraySerialized());
 
     }
 
-    private static void sortsTest(String title,List<AbstractSort> sortList,Integer[] arraySource) {
-        System.out.println("==========" + title + "=============" );
+    private static void sortsTest(String title, List<AbstractSort> sortList, Integer[] arraySource) {
+        System.out.println("==========" + title + "=============");
         TreeSet<AbstractSort> treeSet = new TreeSet<>();
-        System.out.println("原始数据\t size:"+arraySource.length );
-        Arrays.stream(arraySource).limit(1000).forEach(n -> System.out.print(n+"\t"));
+        System.out.println("原始数据\t size:" + arraySource.length);
+        Arrays.stream(arraySource).limit(1000).forEach(n -> System.out.print(n + "\t"));
         System.out.println();
         System.out.println("-------------------");
         sortList.forEach(sort -> {
-            long start = System.currentTimeMillis();
-            System.out.println(sort.name);
-            Integer[] sortResult = sort.sort(arraySource);
-            long end = System.currentTimeMillis();
-            long cost = end - start;
-            System.out.print("花费时间 : " + TimeUtil.costTimeString(cost));
-            System.out.println(" \t 结果 : " + sort.check(sortResult));
-            sort.cost = cost;
-            treeSet.add(sort);
-            System.out.println("----  ------   ----  ----  ----   ---");
+            try {
+                long start = System.currentTimeMillis();
+                System.out.println(sort.name);
+                Integer[] sortResult = sort.sort(arraySource);
+                long end = System.currentTimeMillis();
+                long cost = end - start;
+                sort.showWithDefaultLimit(sortResult);
+                System.out.println("花费时间 : " + TimeUtil.costTimeString(cost) + " \t 结果 : " + sort.check(sortResult));
+                sort.cost = cost;
+                treeSet.add(sort);
+                System.out.println("----  ------   ----  ----  ----   ---");
+            } catch (StackOverflowError error) {
+                System.err.println(sort.name + "  -> 递归栈溢出:StackOverflowError");
+            }
         });
         System.out.println(title + "时间排行榜");
         treeSet.stream().forEach(System.out::println);
-
-        System.out.println(treeSet.size());
         System.out.println();
         System.out.println();
         System.out.println();

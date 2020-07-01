@@ -25,8 +25,6 @@ public class SelectionSort extends AbstractSort {
             maxIndex = 0;
         }
 
-
-        showWithDefaultLimit(array);
         return array;
     }
 }

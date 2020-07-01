@@ -45,7 +45,6 @@ public class CocktailSortFlag extends AbstractSort {
 //            System.out.print("判断" + ncs + "次\t");
 //            show(array);
         }
-        showWithDefaultLimit(array);
 //        System.out.println("共判断" + nc + "次");
         return array;
     }

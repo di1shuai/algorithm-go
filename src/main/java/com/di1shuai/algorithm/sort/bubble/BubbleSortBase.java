@@ -23,7 +23,6 @@ public class BubbleSortBase extends AbstractSort{
             }
 //            show(array);
         }
-        showWithDefaultLimit(array);
         return array;
     }
 
