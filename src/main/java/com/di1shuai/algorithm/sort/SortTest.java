@@ -2,6 +2,7 @@ package com.di1shuai.algorithm.sort;
 
 import com.di1shuai.algorithm.sort.bubble.*;
 import com.di1shuai.algorithm.sort.insert.InsertSort;
+import com.di1shuai.algorithm.sort.merge.MergeSort;
 import com.di1shuai.algorithm.sort.quick.QuickSortBase;
 import com.di1shuai.algorithm.sort.select.SelectionSort;
 import com.di1shuai.algorithm.sort.shell.ShellSort;
@@ -31,11 +32,11 @@ public class SortTest {
 //        sortList.add(new BubbleSortBorder());
 //        sortList.add(new CocktailSortBase());
 //        sortList.add(new CocktailSortFlag());
-        sortList.add(new CocktailSortBorder());
+//        sortList.add(new CocktailSortBorder());
 
-        sortList.add(new SelectionSort());
+//        sortList.add(new SelectionSort());
 
-        sortList.add(new InsertSort());
+//        sortList.add(new InsertSort());
 
 
         //
@@ -43,6 +44,7 @@ public class SortTest {
         sortList.add(new ShellSort());
 
         sortList.add(new QuickSortBase());
+        sortList.add(new MergeSort());
         sortList.add(new ArraysSort());
 
         //基本有序
@@ -52,7 +54,7 @@ public class SortTest {
         Integer[] array4 = new Integer[]{1, 2, 3, 4, 5, -1, 8, 7, 20, 10, 11, 40, 13, 14, 15, 16, 17, 18, 19, 20};
 
         sortsTest("随机数据测试", sortList, DataUtil.getArrayRandom());
-        sortsTest("有序数据测试", sortList, DataUtil.getArraySerialized());
+//        sortsTest("有序数据测试", sortList, DataUtil.getArraySerialized());
 
     }
 

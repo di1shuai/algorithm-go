@@ -11,7 +11,8 @@ import java.util.stream.Stream;
  */
 public class DataUtil {
 
-    private static Integer size = 100 * 1000;
+//    private static Integer size = 1 * 1000 * 1000;
+    private static Integer size = 10;
 
     //无序
     private static Integer[] arrayRandom;
@@ -51,4 +52,11 @@ public class DataUtil {
     public static Integer[] getArraySerialized() {
         return arraySerialized;
     }
+
+
+    public static void main(String[] args) {
+        Integer[] arrayRandom = DataUtil.getArrayRandom();
+        System.out.println(arrayRandom.getClass().getName());
+    }
+
 }

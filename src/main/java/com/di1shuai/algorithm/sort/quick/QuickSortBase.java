@@ -24,31 +24,27 @@ public class QuickSortBase extends AbstractSort {
 
     private Integer[] quickSort(Integer[] array, int left, int right) throws StackOverflowError {
 
-        int start = left;
-        int end = right;
-        int pivot = array[left];
-        while (start < end) {
-            //从后往前
-            while (start < end && array[end] > pivot) {
-                end--;
-            }
-            //从前往后
-            while (start < end && array[start] < pivot) {
-                start++;
-            }
-            if (array[start].equals(array[end]) && start < end) {
-                start++;
-            } else {
-                swap(array, start, end);
-            }
-        }
-        if (start - 1 > left) {
-            quickSort(array, left, start - 1);
-        }
-        if (end + 1 < right) {
-            quickSort(array, end + 1, right);
+        if (left < right) {
+            int partitionIndex = partition(array, left, right);
+            quickSort(array, left, partitionIndex - 1);
+            quickSort(array, partitionIndex + 1, right);
         }
         return array;
+    }
+
+
+    private int partition(Integer[] array, int left, int right) {
+        // 设定基准值（pivot）
+        int pivot = left;
+        int index = pivot + 1;
+        for (int i = index; i <= right; i++) {
+            if (array[i] < array[pivot]) {
+                swap(array, i, index);
+                index++;
+            }
+        }
+        swap(array, pivot, index - 1);
+        return index - 1;
     }
 
 
