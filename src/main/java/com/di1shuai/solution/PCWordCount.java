@@ -1,5 +1,6 @@
 package com.di1shuai.solution;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.*;
@@ -20,15 +21,19 @@ public class PCWordCount {
 
     public static void main(String[] args) {
         PCWordCount pcWordCount = new PCWordCount();
-        pcWordCount.product(3);
+        pcWordCount.product(5);
         pcWordCount.comsumer(3);
+//        Arrays.stream(getWords()).forEach(w -> System.out.print(w + "\t"));
     }
 
-    private static Random random = new Random();
 
     public static String[] getWords() {
-        String[][] ss = {{"aa", "bb", "cc"}, {"aa", "dd", "ee"}};
-        return ss[random.nextInt(2)];
+        char[] chars = UUID.randomUUID().toString().replaceAll("-", "").toCharArray();
+        String[] result = new String[chars.length / 2 ];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = new String(new char[]{chars[i], chars[i + 1]});
+        }
+        return result;
     }
 
     private final ConcurrentHashMap<String, AtomicLong> map = new ConcurrentHashMap<>();
@@ -77,13 +82,13 @@ public class PCWordCount {
                 public void run() {
                     String threadName = Thread.currentThread().getName();
                     while (true) {
-                        String[] poll = queue.poll();
-                        if (poll != null) {
+                        String[] words = queue.poll();
+                        if (words != null) {
                             System.out.print(threadName + " -> ");
-                            for (String s : poll) {
-                                AtomicLong num = map.get(s);
+                            for (String word : words) {
+                                AtomicLong num = map.get(word);
                                 if (null == num) {
-                                    map.put(s, new AtomicLong(1L));
+                                    map.put(word, new AtomicLong(1L));
                                 } else {
                                     num.incrementAndGet();
                                 }
