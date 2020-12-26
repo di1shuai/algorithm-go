@@ -12,28 +12,27 @@ import java.util.Arrays;
 public class MergeSort extends AbstractSort {
 
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
         return mergeSort(array, 0, array.length - 1);
     }
 
-    private Integer[] mergeSort(Integer[] array, int left, int right) {
+    private Comparable[] mergeSort(Comparable[] array, int left, int right) {
         int mid = (left + right) / 2;
         if (left < right) {
-            Integer[] leftArray = mergeSort(array, left, mid);
-            Integer[] rightArray = mergeSort(array, mid + 1, right);
+            Comparable[] leftArray = mergeSort(array, left, mid);
+            Comparable[] rightArray = mergeSort(array, mid + 1, right);
             return merge(leftArray, rightArray);
         }
-        return new Integer[]{array[mid]};
+        return new Comparable[]{array[mid]};
     }
 
-    private Integer[] merge(Integer[] leftArray, Integer[] rightArray) {
-        Integer[] result = new Integer[leftArray.length + rightArray.length];
+    private Comparable[] merge(Comparable[] leftArray, Comparable[] rightArray) {
+        Comparable[] result = new Integer[leftArray.length + rightArray.length];
         int leftIndex = 0;
         int rightIndex = 0;
         for (int i = 0; i < result.length; i++) {
             while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
-                if (leftArray[leftIndex] > rightArray[rightIndex]) {
+                if (less(rightArray[rightIndex], leftArray[leftIndex])) {
                     result[i] = rightArray[rightIndex];
                     rightIndex++;
                 } else if (leftArray[leftIndex].equals(rightArray[rightIndex])) {

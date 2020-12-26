@@ -17,8 +17,7 @@ import com.di1shuai.algorithm.sort.Sort;
 public class CocktailSortBorder extends AbstractSort {
 
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
 //        int n = 0, nc = 0, ncs = 0;
         int left = 0, right = array.length - 1;
         int leftBorder = array.length - 1, rightBorder = 0;
@@ -28,7 +27,7 @@ public class CocktailSortBorder extends AbstractSort {
 //            ncs = 0;
 //            System.out.print("第" + (++n) + "轮:\t");
             for (int i = left; i < right; i++) {
-                if (array[i] > array[i + 1]) {
+                if (less(array[i + 1], array[i])) {
                     swap(array, i, i + 1);
                     rightBorder = i;
                     ok = false;
@@ -37,7 +36,7 @@ public class CocktailSortBorder extends AbstractSort {
             }
             right = rightBorder;
             for (int i = right; i > left; i--) {
-                if (array[i] < array[i - 1]) {
+                if (less(array[i], array[i - 1])) {
                     swap(array, i, i - 1);
                     leftBorder = i;
                     ok = false;

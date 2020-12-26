@@ -16,31 +16,28 @@ import com.di1shuai.algorithm.sort.AbstractSort;
  */
 public class ShellSort extends AbstractSort {
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
         if (array.length <= 1) {
             return array;
         }
 
-        //控制增量
-        for (int k = array.length / 2; k >= 1; k /= 2) {
-            //控制序列
-            for (int i = 0; i < k; i++) {
-                //序列内插入排序
-                //控制序列内 有序范围
-                for (int j = i + k; j <= array.length - 1; j += k) {
-                    //控制序列内下标
-                    for (int l = j - k; l >= 0; l -= k) {
-                        if (array[l] > array[l+k]) {
-                            swap(array, l, l+k);
-                        } else {
-                            break;
-                        }
-                    }
+        int n = array.length;
+        int h = 1;
+        while (h < n / 3) {
+            h = 3 * h + 1; // 1, 4, 13, 40, 121, 364, 1093, ...
+        }
+        while (h >= 1) {  // 将数组变为h有序
+            for (int i = h; i < n; i++) {  // 将a[i]插入到a[i-h], a[i-2*h], a[i-3*h]... 之中
+                for (int j = i; j >= h && less(array[j],array[j - h]); j -= h) {
+                    swap(array, j, j - h);
                 }
             }
+            h = h / 3;
         }
+
 
         return array;
     }
+
+
 }

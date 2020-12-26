@@ -11,18 +11,15 @@ import com.di1shuai.algorithm.sort.AbstractSort;
 public class InsertSort extends AbstractSort {
 
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        if (arraySource.length<=1){
-            show(arraySource);
-            return arraySource;
+    public Comparable[] sort(Comparable[] array) {
+        if (array.length <= 1) {
+            show(array);
+            return array;
         }
-        Integer[] array = arraySource.clone();
         for (int i = 1; i <= array.length - 1; i++) {
-            for (int j = i-1; j >= 0; j--) {
-                if (array[j] > array[j+1]){
-                    swap(array,j,j+1);
-                }else {
-                    break;
+            for (int j = i - 1; j >= 0; j--) {
+                if (less(array[j + 1], array[j])) {
+                    swap(array, j, j + 1);
                 }
             }
         }

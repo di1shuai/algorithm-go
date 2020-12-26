@@ -10,10 +10,8 @@ import java.util.Arrays;
 public class ArraysSort extends AbstractSort {
 
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
         Arrays.sort(array);
         return array;
     }
-
 }

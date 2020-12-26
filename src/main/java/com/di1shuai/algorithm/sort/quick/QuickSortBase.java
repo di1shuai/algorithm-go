@@ -16,13 +16,12 @@ import com.di1shuai.algorithm.sort.AbstractSort;
 public class QuickSortBase extends AbstractSort {
 
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
         quickSort(array, 0, array.length - 1);
         return array;
     }
 
-    private Integer[] quickSort(Integer[] array, int left, int right) throws StackOverflowError {
+    private Comparable[] quickSort(Comparable[] array, int left, int right) throws StackOverflowError {
 
         if (left < right) {
             int partitionIndex = partition(array, left, right);
@@ -33,12 +32,12 @@ public class QuickSortBase extends AbstractSort {
     }
 
 
-    private int partition(Integer[] array, int left, int right) {
+    private int partition(Comparable[] array, int left, int right) {
         // 设定基准值（pivot）
         int pivot = left;
         int index = pivot + 1;
         for (int i = index; i <= right; i++) {
-            if (array[i] < array[pivot]) {
+            if (less(array[i], array[pivot])) {
                 swap(array, i, index);
                 index++;
             }

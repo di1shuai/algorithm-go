@@ -11,16 +11,13 @@ import java.util.stream.Stream;
  */
 public class DataUtil {
 
-//    private static Integer size = 1 * 1000 * 1000;
-    private static Integer size = 10;
-
     //无序
-    private static Integer[] arrayRandom;
+    private static Comparable[] arrayRandom;
 
     //有序
-    private static Integer[] arraySerialized;
+    private static Comparable[] arraySerialized;
 
-    static {
+    public static void generateData(Integer size){
         arrayRandom = Stream.generate(
                 new Supplier<Integer>() {
                     Random random = new Random();
@@ -45,17 +42,17 @@ public class DataUtil {
     }
 
 
-    public static Integer[] getArrayRandom() {
+    public static Comparable[] getArrayRandom() {
         return arrayRandom;
     }
 
-    public static Integer[] getArraySerialized() {
+    public static Comparable[] getArraySerialized() {
         return arraySerialized;
     }
 
 
     public static void main(String[] args) {
-        Integer[] arrayRandom = DataUtil.getArrayRandom();
+        Comparable[] arrayRandom = DataUtil.getArrayRandom();
         System.out.println(arrayRandom.getClass().getName());
     }
 

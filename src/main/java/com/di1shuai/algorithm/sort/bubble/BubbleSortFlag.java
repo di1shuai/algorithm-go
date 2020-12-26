@@ -15,16 +15,14 @@ import java.util.Arrays;
 public class BubbleSortFlag extends AbstractSort {
 
 
-
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
         boolean isOk = true;
         for (int i = 0; i < array.length; i++) {
             isOk = true;
 //            System.out.print("第" + (i + 1) + "轮:\t");
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
+                if (less(array[j + 1], array[j])) {
                     swap(array, j, j + 1);
                     isOk = false;
                 }

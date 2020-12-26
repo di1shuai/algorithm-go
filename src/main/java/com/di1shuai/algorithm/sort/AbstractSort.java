@@ -7,7 +7,7 @@ import com.di1shuai.utils.TimeUtil;
  * @date: 2020/6/29
  * @description:
  */
-public abstract class AbstractSort implements Sort<Integer>, Comparable<AbstractSort> {
+public abstract class AbstractSort implements Sort<Comparable>, Comparable<AbstractSort> {
 
     protected String name = getClass().getSimpleName();
 

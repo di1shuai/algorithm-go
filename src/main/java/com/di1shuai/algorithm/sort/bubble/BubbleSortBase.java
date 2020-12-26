@@ -9,15 +9,14 @@ import com.di1shuai.algorithm.sort.Sort;
  * @description: 冒泡排序 基础版
  * 稳定排序，双层循环
  */
-public class BubbleSortBase extends AbstractSort{
+public class BubbleSortBase extends AbstractSort {
 
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
         for (int i = 0; i < array.length; i++) {
 //            System.out.print("第" + (i + 1) + "轮:\t");
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
+                if (less(array[j + 1], array[j])) {
                     swap(array, j, j + 1);
                 }
             }

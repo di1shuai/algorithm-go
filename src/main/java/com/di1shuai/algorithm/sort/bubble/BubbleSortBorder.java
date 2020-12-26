@@ -13,19 +13,18 @@ import com.di1shuai.algorithm.sort.Sort;
 public class BubbleSortBorder extends AbstractSort {
 
     @Override
-    public Integer[] sort(Integer[] arraySource) {
-        Integer[] array = arraySource.clone();
+    public Comparable[] sort(Comparable[] array) {
         int border = 0;
         for (int i = 0; i < array.length; i++) {
 //            System.out.print("第" + (i + 1) + "轮:\t");
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
+                if (less(array[j + 1], array[j])) {
                     swap(array, j, j + 1);
                     border = j;
                 }
             }
 //            show(array);
-            if (border == 0){
+            if (border == 0) {
                 return array;
             }
         }
