@@ -15,26 +15,32 @@ import com.di1shuai.algorithm.sort.AbstractSort;
  * 直至增量为1后，对已经基本有序的数列做插入排序
  */
 public class ShellSort extends AbstractSort {
+
+    private IncrementSequence incrementSequence;
+
+
+    public ShellSort(IncrementSequence incrementSequence) {
+        this.incrementSequence = incrementSequence;
+        name = name + "_" + incrementSequence.getClass().getSimpleName();
+    }
+
     @Override
     public Comparable[] sort(Comparable[] array) {
         if (array.length <= 1) {
             return array;
         }
-
         int n = array.length;
-        int h = 1;
-        while (h < n / 3) {
-            h = 3 * h + 1; // 1, 4, 13, 40, 121, 364, 1093, ...
-        }
-        while (h >= 1) {  // 将数组变为h有序
-            for (int i = h; i < n; i++) {  // 将a[i]插入到a[i-h], a[i-2*h], a[i-3*h]... 之中
-                for (int j = i; j >= h && less(array[j],array[j - h]); j -= h) {
+        int h = incrementSequence.getHfromN(n);
+        // 将数组变为h有序
+        while (h >= 1) {
+            // 将a[i]插入到a[i-h], a[i-2*h], a[i-3*h]... 之中
+            for (int i = h; i < n; i++) {
+                for (int j = i; j >= h && less(array[j], array[j - h]); j -= h) {
                     swap(array, j, j - h);
                 }
             }
-            h = h / 3;
+            h = incrementSequence.getHfromH(h);
         }
-
 
         return array;
     }

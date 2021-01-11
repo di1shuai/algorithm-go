@@ -6,6 +6,9 @@ import com.di1shuai.algorithm.sort.merge.MergeSort;
 import com.di1shuai.algorithm.sort.quick.QuickSortBase;
 import com.di1shuai.algorithm.sort.select.SelectionSort;
 import com.di1shuai.algorithm.sort.shell.ShellSort;
+import com.di1shuai.algorithm.sort.shell.increment.HibbardIncrementSequence;
+import com.di1shuai.algorithm.sort.shell.increment.KnuthIncrementSequence;
+import com.di1shuai.algorithm.sort.shell.increment.ShellIncrementSequence;
 import com.di1shuai.utils.DataUtil;
 import com.di1shuai.utils.TimeUtil;
 
@@ -18,7 +21,7 @@ import java.util.*;
  */
 public class SortTest {
 
-    public static final int size = 1 << 10 << 5;
+    public static final int size = 1 << 10 << 10;
 
     static {
         DataUtil.generateData(size);
@@ -26,28 +29,10 @@ public class SortTest {
 
     public static void main(String[] args) {
         List<AbstractSort> sortList = new ArrayList<>();
-
-
         // n^2
-        sortList.add(new BubbleSortBase());
-        sortList.add(new BubbleSortFlag());
-        sortList.add(new BubbleSortBorder());
-        sortList.add(new CocktailSortBase());
-        sortList.add(new CocktailSortFlag());
-        sortList.add(new CocktailSortBorder());
-
-        sortList.add(new SelectionSort());
-
-        sortList.add(new InsertSort());
-
-
-        //
-
-        sortList.add(new ShellSort());
-
-        sortList.add(new QuickSortBase());
-//        sortList.add(new MergeSort());
-        sortList.add(new ArraysSort());
+//        O_nn(sortList);
+        // nlog2n
+        O_nlog2n(sortList);
 
         //基本有序
         Comparable[] array3 = new Integer[]{1, 2, 3, 4, 5, 6, -1};
@@ -60,6 +45,33 @@ public class SortTest {
 
     }
 
+    private static void O_nlog2n(List<AbstractSort> sortList) {
+        //Shell
+        sortList.add(new ShellSort(new ShellIncrementSequence()));
+        sortList.add(new ShellSort(new KnuthIncrementSequence()));
+        sortList.add(new ShellSort(new HibbardIncrementSequence()));
+
+        //Quick
+        sortList.add(new QuickSortBase());
+
+        //Merge
+//        sortList.add(new MergeSort());
+        sortList.add(new ArraysSort());
+    }
+
+    private static void O_nn(List<AbstractSort> sortList) {
+        sortList.add(new BubbleSortBase());
+        sortList.add(new BubbleSortFlag());
+        sortList.add(new BubbleSortBorder());
+        sortList.add(new CocktailSortBase());
+        sortList.add(new CocktailSortFlag());
+        sortList.add(new CocktailSortBorder());
+
+        sortList.add(new SelectionSort());
+
+        sortList.add(new InsertSort());
+    }
+
     private static void sortsTest(String title, List<AbstractSort> sortList, Comparable[] arraySource) {
         System.out.println("==========" + title + "=============");
         TreeSet<AbstractSort> treeSet = new TreeSet<>();
@@ -69,12 +81,18 @@ public class SortTest {
         System.out.println("-------------------");
         sortList.forEach(sort -> {
             try {
-                long start = System.currentTimeMillis();
+                // 输出算法名称
                 System.out.println(sort.name);
+
+                // 开始计时
+                long start = System.currentTimeMillis();
                 Comparable[] sortResult = sort.sortFlow(arraySource);
+                // 结束计时
                 long end = System.currentTimeMillis();
                 long cost = end - start;
                 System.out.println("花费时间 : " + TimeUtil.costTimeString(cost) + " \t 结果 : " + sort.check(sortResult));
+
+                //算法耗时排序
                 sort.cost = cost;
                 treeSet.add(sort);
                 System.out.println("----  ------   ----  ----  ----   ---");
