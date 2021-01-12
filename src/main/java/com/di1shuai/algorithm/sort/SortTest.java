@@ -21,7 +21,7 @@ import java.util.*;
  */
 public class SortTest {
 
-    public static final int size = 1 << 10 << 5;
+    public static final int size = 1 << 10 << 10 << 1;
 
     static {
         DataUtil.generateData(size);
@@ -30,8 +30,8 @@ public class SortTest {
     public static void main(String[] args) {
         List<AbstractSort> sortList = new ArrayList<>();
         // n^2
-        O_nn(sortList);
-        // nlog2n
+//        O_nn(sortList);
+        // nlogn
         O_nlogn(sortList);
 
         //基本有序
@@ -55,7 +55,9 @@ public class SortTest {
         sortList.add(new QuickSortBase());
 
         //Merge
-//        sortList.add(new MergeSort());
+        sortList.add(new MergeSort());
+
+        //Java Arrays
         sortList.add(new ArraysSort());
     }
 
@@ -72,7 +74,7 @@ public class SortTest {
         sortList.add(new InsertSort());
     }
 
-    private static void sortsTest(String title, List<AbstractSort> sortList, Comparable[] arraySource) {
+    public static void sortsTest(String title, List<AbstractSort> sortList, Comparable[] arraySource) {
         System.out.println("==========" + title + "=============");
         TreeSet<AbstractSort> treeSet = new TreeSet<>();
         System.out.println("原始数据\t size:" + arraySource.length);

@@ -13,46 +13,50 @@ public class MergeSort extends AbstractSort {
 
     @Override
     public Comparable[] sort(Comparable[] array) {
-        return mergeSort(array, 0, array.length - 1);
-    }
-
-    private Comparable[] mergeSort(Comparable[] array, int left, int right) {
-        int mid = (left + right) / 2;
-        if (left < right) {
-            Comparable[] leftArray = mergeSort(array, left, mid);
-            Comparable[] rightArray = mergeSort(array, mid + 1, right);
-            return merge(leftArray, rightArray);
+        // 跳出条件
+        if (array.length < 2) {
+            return array;
         }
-        return new Comparable[]{array[mid]};
+        // 计算中间点
+        int mid = array.length >> 1;
+        //左右切分
+        Comparable[] leftArray = Arrays.copyOfRange(array, 0, mid);
+        Comparable[] rightArray = Arrays.copyOfRange(array, mid, array.length);
+        //合并已排序序列
+        return merge(sort(leftArray), sort(rightArray));
     }
 
-    private Comparable[] merge(Comparable[] leftArray, Comparable[] rightArray) {
-        Comparable[] result = new Integer[leftArray.length + rightArray.length];
+    private Comparable[] merge(Comparable[] left, Comparable[] right) {
+        // init
         int leftIndex = 0;
         int rightIndex = 0;
-        for (int i = 0; i < result.length; i++) {
-            while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
-                if (less(rightArray[rightIndex], leftArray[leftIndex])) {
-                    result[i] = rightArray[rightIndex];
-                    rightIndex++;
-                } else if (leftArray[leftIndex].equals(rightArray[rightIndex])) {
-                    result[i] = leftArray[leftIndex];
-                    leftIndex++;
-                    result[++i] = rightArray[rightIndex];
-                    rightIndex++;
-                } else {
-                    result[i] = rightArray[rightIndex];
-                    rightIndex++;
-                }
-            }
-            if (leftIndex == leftArray.length - 1 && rightIndex < rightArray.length - 1) {
-                result[i] = rightArray[rightIndex++];
-            } else if (rightIndex == rightArray.length - 1 && leftIndex < leftArray.length - 1) {
-                result[i] = leftArray[leftIndex++];
-            }
+        int index = 0;
+        Comparable[] result = new Comparable[left.length + right.length];
 
+        // 合并左右序列
+        while (leftIndex < left.length && rightIndex < right.length) {
+            if (less(left[leftIndex], right[rightIndex])) {
+                result[index] = left[leftIndex++];
+            }else {
+                result[index] = right[rightIndex++];
+            }
+            index++;
+        }
+        // 复制长序列部分
+        while (leftIndex < left.length) {
+            result[index++] = left[leftIndex++];
+        }
+        while (rightIndex < right.length) {
+            result[index++] = right[rightIndex++];
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        MergeSort mergeSort = new MergeSort();
+        mergeSort.test();
+
+
     }
 
 }

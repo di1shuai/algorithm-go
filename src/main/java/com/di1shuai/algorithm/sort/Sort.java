@@ -14,10 +14,10 @@ public interface Sort<T extends Comparable> {
 
     default T[] sortFlow(T[] arraySource){
         T[] array = arraySource.clone();
-        sort(array);
-        assert check(array) : "Sort is error";
-        showWithDefaultLimit(array);
-        return array;
+        T[] sort = sort(array);
+        assert check(sort) : "Sort is error";
+        showWithDefaultLimit(sort);
+        return sort;
     }
 
     default boolean check(T[] array) {
