@@ -21,7 +21,7 @@ import java.util.*;
  */
 public class SortTest {
 
-    public static final int size = 1 << 10 << 10;
+    public static final int size = 1 << 10 << 5;
 
     static {
         DataUtil.generateData(size);
@@ -30,9 +30,9 @@ public class SortTest {
     public static void main(String[] args) {
         List<AbstractSort> sortList = new ArrayList<>();
         // n^2
-//        O_nn(sortList);
+        O_nn(sortList);
         // nlog2n
-        O_nlog2n(sortList);
+        O_nlogn(sortList);
 
         //基本有序
         Comparable[] array3 = new Integer[]{1, 2, 3, 4, 5, 6, -1};
@@ -45,7 +45,7 @@ public class SortTest {
 
     }
 
-    private static void O_nlog2n(List<AbstractSort> sortList) {
+    private static void O_nlogn(List<AbstractSort> sortList) {
         //Shell
         sortList.add(new ShellSort(new ShellIncrementSequence()));
         sortList.add(new ShellSort(new KnuthIncrementSequence()));
@@ -101,7 +101,19 @@ public class SortTest {
             }
         });
         System.out.println(title + "时间排行榜");
-        treeSet.stream().forEach(System.out::println);
+        System.out.printf("%-40s","name");
+        System.out.printf("%10s","cost");
+        System.out.printf("%15s","compareCount");
+        System.out.printf("%15s","swapCount");
+        System.out.println();
+        System.out.println("-------------------");
+        treeSet.stream().forEach(sort -> {
+            System.out.printf("%-40s", sort.name);
+            System.out.printf("%10s", sort.cost);
+            System.out.printf("%15s", sort.compareCount);
+            System.out.printf("%15s", sort.swapCount);
+            System.out.println();
+        });
         System.out.println();
         System.out.println();
         System.out.println();
