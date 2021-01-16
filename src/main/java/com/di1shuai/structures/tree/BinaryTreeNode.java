@@ -56,15 +56,15 @@ public class BinaryTreeNode {
          */
         BinaryTreeNode root = new BinaryTreeNode(
                 new BinaryTreeNode(
-                        new BinaryTreeNode(null,4l,null),
+                        new BinaryTreeNode(null,4L,null),
                         2L,
                         null
                 ),
                 1L,
                 new BinaryTreeNode(
-                        new BinaryTreeNode(null,5l,null),
+                        new BinaryTreeNode(null,5L,null),
                         3L,
-                        new BinaryTreeNode(null,6l,null)
+                        new BinaryTreeNode(null,6L,null)
                 )
         );
 

@@ -1,5 +1,7 @@
 package com.di1shuai.algorithm.sort;
 
+import com.di1shuai.Base;
+
 import java.util.Arrays;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Arrays;
  * @date: 2020/6/10
  * @description:
  */
-public interface Sort<T extends Comparable> {
+public interface Sort<T extends Comparable> extends Base<T> {
 
 
     T[] sort(T[] array);
@@ -31,34 +33,7 @@ public interface Sort<T extends Comparable> {
 
 
 
-    default void show(T[] array) {
-        Arrays.stream(array).forEach(n -> System.out.print(n + "\t"));
-        System.out.println();
-    }
 
-    default void showWithLimit(T[] array, long limit) {
-        Arrays.stream(array).limit(limit).forEach(n -> System.out.print(n + "\t"));
-        System.out.println();
-    }
-
-    default void showWithDefaultLimit(T[] array) {
-        long limit = 100L;
-        Arrays.stream(array).limit(limit).forEach(n -> System.out.print(n + "\t"));
-        System.out.println();
-    }
-
-    default boolean less(Comparable one, Comparable other) {
-        if (one.compareTo(other) < 0){
-            return true;
-        }
-        return false;
-    }
-
-    default void swap(T[] array, int index1, int index2) {
-        T tmp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = tmp;
-    }
 
 
 }
