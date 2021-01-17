@@ -1,6 +1,7 @@
 package com.di1shuai.algorithm.sort;
 
 import com.di1shuai.algorithm.sort.bubble.*;
+import com.di1shuai.algorithm.sort.heap.HeapSort;
 import com.di1shuai.algorithm.sort.insert.InsertSort;
 import com.di1shuai.algorithm.sort.merge.MergeSort;
 import com.di1shuai.algorithm.sort.quick.QuickSortBase;
@@ -59,6 +60,9 @@ public class SortTest {
 
         //Java Arrays
         sortList.add(new ArraysSort());
+
+        //Heap
+        sortList.add(new HeapSort());
     }
 
     private static void O_nn(List<AbstractSort> sortList) {
