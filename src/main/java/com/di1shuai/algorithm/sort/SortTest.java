@@ -1,6 +1,7 @@
 package com.di1shuai.algorithm.sort;
 
 import com.di1shuai.algorithm.sort.bubble.*;
+import com.di1shuai.algorithm.sort.counting.CountingSort;
 import com.di1shuai.algorithm.sort.heap.HeapSort;
 import com.di1shuai.algorithm.sort.insert.InsertSort;
 import com.di1shuai.algorithm.sort.merge.MergeSort;
@@ -35,6 +36,11 @@ public class SortTest {
         // nlogn
         O_nlogn(sortList);
 
+        // n+k
+        O_n(sortList);
+
+
+
         //基本有序
         Comparable[] array3 = new Integer[]{1, 2, 3, 4, 5, 6, -1};
 
@@ -43,6 +49,12 @@ public class SortTest {
 
         sortsTest("随机数据测试", sortList, DataUtil.getArrayRandom());
 //        sortsTest("有序数据测试", sortList, DataUtil.getArraySerialized());
+
+    }
+
+    private static void O_n(List<AbstractSort> sortList) {
+        // Counting
+        sortList.add(new CountingSort());
 
     }
 
